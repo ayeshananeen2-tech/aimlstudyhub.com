@@ -1,0 +1,1967 @@
+AIML 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AIML STUDY HUB</title>
+
+<style>
+:root {
+    --bg: #080d18;
+    --card: #111b2e;
+    --blue: #00c8ff;
+    --text: #f4f7ff;
+    --muted: #a8b5cc;
+    --border: #263650;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+header {
+    background: #0c1527;
+    border-bottom: 1px solid var(--border);
+    padding: 18px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: var(--blue);
+    font-size: 23px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: var(--blue);
+}
+
+.hero {
+    text-align: center;
+    padding: 85px 20px 65px;
+    background:
+    radial-gradient(circle at top, #12365a 0%, #080d18 65%);
+}
+
+.hero h1 {
+    font-size: clamp(35px, 6vw, 60px);
+    margin-bottom: 15px;
+}
+
+.hero h1 span {
+    color: var(--blue);
+}
+
+.hero p {
+    color: var(--muted);
+    max-width: 650px;
+    margin: auto;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--blue);
+    color: #00111c;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    margin: 20px 7px 0;
+    font-weight: bold;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background: white;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 55px 0;
+}
+
+.section-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: var(--muted);
+    margin-bottom: 25px;
+}
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 18px;
+    margin-top: 35px;
+}
+
+.stat-card, .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    padding: 22px;
+}
+
+.stat-card h2 {
+    color: var(--blue);
+    font-size: 30px;
+}
+
+.search-box {
+    width: 100%;
+    padding: 15px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: #111b2e;
+    color: white;
+    font-size: 16px;
+    margin: 15px 0 25px;
+    outline: none;
+}
+
+.search-box:focus {
+    border-color: var(--blue);
+}
+
+.year-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.year-btn {
+    padding: 11px 18px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: var(--card);
+    color: white;
+    cursor: pointer;
+}
+
+.year-btn.active, .year-btn:hover {
+    background: var(--blue);
+    color: #00111c;
+}
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+}
+
+.subject-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 12px;
+    transition: 0.2s;
+}
+
+.subject-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-3px);
+}
+
+.subject-card h3 {
+    color: var(--blue);
+    margin-bottom: 8px;
+}
+
+.subject-card p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.subject-card button {
+    margin-top: 15px;
+    background: transparent;
+    color: var(--blue);
+    border: 1px solid var(--blue);
+    padding: 9px 14px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+
+.subject-card button:hover {
+    background: var(--blue);
+    color: #00111c;
+}
+
+.progress-bar {
+    background: #263650;
+    height: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--blue);
+    transition: 0.3s;
+}
+
+.panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 20px;
+}
+
+.panel h3 {
+    color: var(--blue);
+    margin-bottom: 12px;
+}
+
+.topic {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.topic button {
+    padding: 7px 11px;
+    background: var(--blue);
+    color: #00111c;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.topic button.done {
+    background: #20c997;
+}
+
+.question {
+    margin: 15px 0;
+    padding: 15px;
+    background: #0b1424;
+    border-radius: 8px;
+}
+
+.question h4 {
+    margin-bottom: 8px;
+}
+
+.answer {
+    color: var(--muted);
+    display: none;
+    margin-top: 10px;
+}
+
+.show-answer {
+    color: var(--blue);
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.quiz-option {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: #0b1424;
+    color: white;
+    text-align: left;
+    cursor: pointer;
+}
+
+.quiz-option:hover {
+    border-color: var(--blue);
+}
+
+#quizResult {
+    color: var(--blue);
+    margin-top: 15px;
+}
+
+.code-box {
+    background: #050a12;
+    padding: 18px;
+    border-radius: 9px;
+    overflow-x: auto;
+    color: #7ee7ff;
+    white-space: pre-wrap;
+    margin: 15px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media(max-width: 650px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        padding: 60px 15px;
+    }
+
+    .container {
+        width: 92%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">⚡ AIML STUDY HUB</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#subjects">Subjects</a>
+        <a href="#exam">Exam Prep</a>
+        <a href="#quiz">Quiz</a>
+        <a href="#lab">Programming Lab</a>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <h1>Welcome to <span>AIML STUDY HUB</span></h1>
+
+    <p>
+        Your complete learning platform for BTech Artificial Intelligence
+        and Machine Learning. Learn subjects, explore topics, practise
+        questions and improve your skills.
+    </p>
+
+    <a href="#subjects" class="btn">Explore Subjects</a>
+    <a href="#quiz" class="btn">Start Quiz</a>
+
+    <div class="stats">
+        <div class="stat-card">
+            <h2>4</h2>
+            <p>BTech Years</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="subjectCount">0</h2>
+            <p>Listed Subjects</p>
+        </div>
+
+        <div class="stat-card">
+            <h2 id="completedCount">0</h2>
+            <p>Topics Completed</p>
+        </div>
+    </div>
+</section>
+
+<section class="container" id="subjects">
+
+    <h2 class="section-title">📚 Explore Subjects</h2>
+
+    <p class="subtitle">
+        Select your BTech year and explore subjects and topics.
+    </p>
+
+    <input
+        type="text"
+        id="searchInput"
+        class="search-box"
+        placeholder="Search subjects or topics..."
+        oninput="renderSubjects()"
+    >
+
+    <div class="year-buttons">
+        <button class="year-btn active" onclick="selectYear(1,this)">1st Year</button>
+        <button class="year-btn" onclick="selectYear(2,this)">2nd Year</button>
+        <button class="year-btn" onclick="selectYear(3,this)">3rd Year</button>
+        <button class="year-btn" onclick="selectYear(4,this)">4th Year</button>
+        <button class="year-btn" onclick="selectYear(0,this)">All Years</button>
+    </div>
+
+    <div class="subject-grid" id="subjectGrid"></div>
+
+</section>
+
+<section class="container" id="learning">
+
+    <h2 class="section-title">📖 Learning Area</h2>
+    <p class="subtitle">Select a subject to see its topics and learning material.</p>
+
+    <div class="panel" id="learningPanel">
+        <h3>Welcome to your learning area</h3>
+        <p>Select any subject above to start learning.</p>
+    </div>
+
+</section>
+
+<section class="container" id="progress">
+
+    <h2 class="section-title">📊 Your Learning Progress</h2>
+    <p class="subtitle">Your completed topics are saved in this browser.</p>
+
+    <div class="panel">
+        <h3>Overall Progress</h3>
+        <p id="progressText">0 topics completed</p>
+
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+    </div>
+
+</section>
+
+<section class="container" id="exam">
+
+    <h2 class="section-title">📝 Exam Preparation</h2>
+    <p class="subtitle">Sample questions for 2, 5 and 10 marks.</p>
+
+    <div class="panel">
+        <h3>2-Mark Questions</h3>
+
+        <div class="question">
+            <h4>1. What is Artificial Intelligence?</h4>
+            <p class="answer">
+                Artificial Intelligence is a branch of computer science
+                that develops systems capable of performing tasks that
+                normally require human intelligence.
+            </p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Show Answer</button>
+        </div>
+
+        <div class="question">
+            <h4>2. Define Machine Learning.</h4>
+            <p class="answer">
+                Machine Learning is a branch of AI that allows computers
+                to learn patterns from data and make predictions without
+                being explicitly programmed for every task.
+            </p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Show Answer</button>
+        </div>
+
+        <div class="question">
+            <h4>3. What is an Algorithm?</h4>
+            <p class="answer">
+                An algorithm is a finite sequence of clear steps used
+                to solve a particular problem.
+            </p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Show Answer</button>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h3>5-Mark Questions</h3>
+
+        <div class="question">
+            <h4>1. Explain the applications of Artificial Intelligence.</h4>
+            <p class="answer">
+                AI is used in healthcare for medical image analysis,
+                in education for personalized learning, in banking
+                for fraud detection, in transportation for smart
+                navigation and in agriculture for crop monitoring.
+            </p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Show Answer</button>
+        </div>
+
+        <div class="question">
+            <h4>2. Explain the types of Machine Learning.</h4>
+            <p class="answer">
+                Supervised learning uses labelled data.
+                Unsupervised learning finds patterns in unlabelled data.
+                Reinforcement learning learns through rewards and
+                penalties while interacting with an environment.
+            </p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Show Answer</button>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h3>10-Mark Questions</h3>
+
+        <div class="question">
+            <h4>1. Explain Artificial Intelligence, its types and applications.</h4>
+            <p class="answer">
+                Artificial Intelligence is a field of computer science
+                concerned with building intelligent systems.
+
+                <br><br>
+                Types:
+                <br>1. Narrow AI – designed for specific tasks.
+                <br>2. General AI – a theoretical form of AI with broad
+                human-like abilities.
+                <br>3. Super AI – a hypothetical system that exceeds
+                human intelligence.
+
+                <br><br>
+                Applications include healthcare, education, banking,
+                robotics, agriculture, transportation and cybersecurity.
+
+                <br><br>
+                AI helps automate tasks, analyse large amounts of data
+                and support decision-making.
+            </p>
+            <button class="show-answer" onclick="toggleAnswer(this)">Show Answer</button>
+        </div>
+    </div>
+
+</section>
+
+<section class="container" id="quiz">
+
+    <h2 class="section-title">🧠 AIML Practice Quiz</h2>
+    <p class="subtitle">Test your basic AIML knowledge.</p>
+
+    <div class="panel">
+        <h3 id="quizQuestion">Question will appear here</h3>
+
+        <div id="quizOptions"></div>
+
+        <p id="quizResult"></p>
+
+        <button class="btn" onclick="nextQuestion()">Next Question</button>
+        <button class="btn" onclick="restartQuiz()">Restart Quiz</button>
+    </div>
+
+</section>
+
+<section class="container" id="lab">
+
+    <h2 class="section-title">💻 Programming Lab</h2>
+    <p class="subtitle">Learn basic Python programming.</p>
+
+    <div class="panel">
+        <h3>Program 1: Hello World</h3>
+
+        <div class="code-box">print("Hello, World!")
+print("Welcome to AIML Study Hub")</div>
+
+        <h3>Expected Output</h3>
+
+        <div class="code-box">Hello, World!
+Welcome to AIML Study Hub</div>
+    </div>
+
+    <div class="panel">
+        <h3>Program 2: Even or Odd</h3>
+
+        <div class="code-box">num = 10
+
+if num % 2 == 0:
+    print("Even Number")
+else:
+    print("Odd Number")</div>
+
+        <h3>Expected Output</h3>
+
+        <div class="code-box">Even Number</div>
+    </div>
+
+    <div class="panel">
+        <h3>Program 3: Addition of Two Numbers</h3>
+
+        <div class="code-box">a = 10
+b = 20
+
+sum = a + b
+
+print("Sum =", sum)</div>
+
+        <h3>Expected Output</h3>
+
+        <div class="code-box">Sum = 30</div>
+    </div>
+
+</section>
+
+<section class="container" id="about">
+
+    <h2 class="section-title">About AIML Study Hub</h2>
+
+    <div class="panel">
+        <p>
+            AIML Study Hub is a student learning platform designed
+            for BTech Artificial Intelligence and Machine Learning
+            students.
+
+            <br><br>
+
+            It provides a structured place to explore subjects,
+            understand topics, practise programming and prepare
+            for examinations across all four years.
+        </p>
+    </div>
+
+</section>
+
+<footer>
+    <p>⚡ AIML STUDY HUB</p>
+    <p>Learn • Practise • Improve • Achieve</p>
+    <p>Made for BTech AIML Students</p>
+</footer>
+
+<script>
+
+const subjects = [
+
+{
+year:1,
+name:"Engineering Mathematics",
+topics:["Matrices","Differential Calculus","Integral Calculus","Differential Equations","Vector Calculus"]
+},
+{
+year:1,
+name:"Engineering Physics",
+topics:["Wave Optics","Lasers","Fibre Optics","Quantum Mechanics","Semiconductors"]
+},
+{
+year:1,
+name:"Engineering Chemistry",
+topics:["Atomic Structure","Chemical Bonding","Electrochemistry","Polymers","Nanomaterials"]
+},
+{
+year:1,
+name:"Python Programming",
+topics:["Introduction to Python","Data Types","Operators","Conditional Statements","Loops","Functions","Lists and Tuples","Dictionaries","File Handling"]
+},
+{
+year:1,
+name:"Computational Thinking",
+topics:["Problem Solving","Algorithms","Flowcharts","Pseudocode","Decomposition","Pattern Recognition","Abstraction"]
+},
+{
+year:1,
+name:"English Communication",
+topics:["Grammar","Vocabulary","Reading Skills","Writing Skills","Communication Skills"]
+},
+{
+year:1,
+name:"Basic Electrical Engineering",
+topics:["Electrical Circuits","Ohm's Law","Kirchhoff's Laws","AC Circuits","Electrical Machines"]
+},
+{
+year:2,
+name:"Data Structures",
+topics:["Arrays","Linked Lists","Stacks","Queues","Trees","Graphs","Searching","Sorting"]
+},
+{
+year:2,
+name:"Object Oriented Programming",
+topics:["Classes","Objects","Inheritance","Polymorphism","Encapsulation","Abstraction","Exception Handling"]
+},
+{
+year:2,
+name:"Database Management Systems",
+topics:["DBMS Introduction","ER Model","Relational Model","SQL","Normalization","Transactions"]
+},
+{
+year:2,
+name:"Discrete Mathematics",
+topics:["Set Theory","Relations","Functions","Graph Theory","Logic","Combinatorics"]
+},
+{
+year:2,
+name:"Computer Organization",
+topics:["Number Systems","Logic Gates","Boolean Algebra","CPU","Memory","Input and Output"]
+},
+{
+year:2,
+name:"Operating Systems",
+topics:["Processes","Threads","CPU Scheduling","Deadlocks","Memory Management","File Systems"]
+},
+{
+year:2,
+name:"Computer Networks",
+topics:["Network Models","OSI Model","TCP/IP","IP Addressing","Routing","Network Security"]
+},
+{
+year:3,
+name:"Artificial Intelligence",
+topics:["Introduction to AI","Intelligent Agents","Search Algorithms","Knowledge Representation","Expert Systems","Reasoning"]
+},
+{
+year:3,
+name:"Machine Learning",
+topics:["Supervised Learning","Unsupervised Learning","Regression","Classification","Clustering","Decision Trees","Model Evaluation"]
+},
+{
+year:3,
+name:"Deep Learning",
+topics:["Neural Networks","Perceptrons","Backpropagation","CNN","RNN","Transformers"]
+},
+{
+year:3,
+name:"Data Science",
+topics:["Data Collection","Data Cleaning","Data Analysis","Statistics","Data Visualization","Feature Engineering"]
+},
+{
+year:3,
+name:"Probability and Statistics",
+topics:["Probability","Random Variables","Distributions","Mean and Variance","Hypothesis Testing","Correlation"]
+},
+{
+year:3,
+name:"Software Engineering",
+topics:["SDLC","Agile Model","Requirements","Software Design","Testing","Project Management"]
+},
+{
+year:3,
+name:"Cloud Computing",
+topics:["Cloud Introduction","Virtualization","Service Models","Deployment Models","Cloud Security"]
+},
+{
+year:4,
+name:"Natural Language Processing",
+topics:["Text Processing","Tokenization","Stemming","Lemmatization","Sentiment Analysis","Language Models"]
+},
+{
+year:4,
+name:"Computer Vision",
+topics:["Image Processing","Image Classification","Object Detection","Image Segmentation","Feature Extraction"]
+},
+{
+year:4,
+name:"Generative AI",
+topics:["Generative Models","Large Language Models","Prompt Engineering","GANs","Diffusion Models","AI Applications"]
+},
+{
+year:4,
+name:"Reinforcement Learning",
+topics:["Agents and Environments","Rewards","Q-Learning","Policy Learning","Deep Reinforcement Learning"]
+},
+{
+year:4,
+name:"Big Data Analytics",
+topics:["Big Data Concepts","Hadoop","MapReduce","Spark","Data Analytics"]
+},
+{
+year:4,
+name:"AI Ethics and Security",
+topics:["Responsible AI","Bias and Fairness","Privacy","Explainable AI","AI Security"]
+},
+{
+year:4,
+name:"Final Year Project",
+topics:["Problem Identification","Literature Survey","System Design","Implementation","Testing","Documentation","Presentation"]
+}
+
+];
+
+let currentYear = 1;
+let completed = JSON.parse(localStorage.getItem("aimlCompleted") || "[]");
+
+function selectYear(year, button) {
+    currentYear = year;
+
+    document.querySelectorAll(".year-btn").forEach(btn => {
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    renderSubjects();
+}
+
+function renderSubjects() {
+
+    const grid = document.getElementById("subjectGrid");
+    const search = document.getElementById("searchInput").value.toLowerCase();
+
+    grid.innerHTML = "";
+
+    let filtered = subjects.filter(subject => {
+
+        const yearMatch = currentYear === 0 || subject.year === currentYear;
+
+        const text = (
+            subject.name + " " + subject.topics.join(" ")
+        ).toLowerCase();
+
+        return yearMatch && text.includes(search);
+    });
+
+    filtered.forEach((subject, index) => {
+
+        const card = document.createElement("div");
+        card.className = "subject-card";
+
+        const heading = document.createElement("h3");
+        heading.textContent = subject.name;
+
+        const description = document.createElement("p");
+        description.textContent =
+            "BTech Year " + subject.year + " • " +
+            subject.topics.length + " topics";
+
+        const button = document.createElement("button");
+        button.textContent = "Explore Topics";
+
+        button.addEventListener("click", () => {
+            openSubject(subject);
+        });
+
+        card.appendChild(heading);
+        card.appendChild(description);
+        card.appendChild(button);
+
+        grid.appendChild(card);
+    });
+
+    document.getElementById("subjectCount").textContent = subjects.length;
+}
+
+function openSubject(subject) {
+
+    const panel = document.getElementById("learningPanel");
+
+    panel.innerHTML = "";
+
+    const heading = document.createElement("h3");
+    heading.textContent = subject.name + " - Year " + subject.year;
+
+    const intro = document.createElement("p");
+    intro.textContent = "Select a topic to mark it as completed.";
+
+    panel.appendChild(heading);
+    panel.appendChild(intro);
+
+    subject.topics.forEach(topic => {
+
+        const row = document.createElement("div");
+        row.className = "topic";
+
+        const label = document.createElement("span");
+        label.textContent = topic;
+
+        const key = subject.name + "::" + topic;
+
+        const button = document.createElement("button");
+        button.textContent = completed.includes(key) ? "Completed ✓" : "Mark Done";
+
+        if (completed.includes(key)) {
+            button.classList.add("done");
+        }
+
+        button.addEventListener("click", () => {
+
+            if (completed.includes(key)) {
+                completed = completed.filter(item => item !== key);
+            } else {
+                completed.push(key);
+            }
+
+            localStorage.setItem("aimlCompleted", JSON.stringify(completed));
+
+            openSubject(subject);
+            updateProgress();
+        });
+
+        row.appendChild(label);
+        row.appendChild(button);
+
+        panel.appendChild(row);
+    });
+
+    panel.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function updateProgress() {
+
+    const total = subjects.reduce((sum, subject) => {
+        return sum + subject.topics.length;
+    }, 0);
+
+    const count = completed.length;
+    const percent = Math.round((count / total) * 100);
+
+    document.getElementById("completedCount").textContent = count;
+    document.getElementById("progressText").textContent =
+        count + " of " + total + " topics completed (" + percent + "%)";
+
+    document.getElementById("progressFill").style.width = percent + "%";
+}
+
+function toggleAnswer(button) {
+
+    const answer = button.previousElementSibling;
+
+    if (answer.style.display === "block") {
+        answer.style.display = "none";
+        button.textContent = "Show Answer";
+    } else {
+        answer.style.display = "block";
+        button.textContent = "Hide Answer";
+    }
+}
+
+const quizQuestions = [
+
+{
+q:"What does AI stand for?",
+options:["Artificial Intelligence","Automatic Internet","Advanced Information","Applied Internet"],
+answer:0
+},
+
+{
+q:"Which language is popular in AI and Machine Learning?",
+options:["HTML","Python","CSS","XML"],
+answer:1
+},
+
+{
+q:"Which data structure follows FIFO?",
+options:["Stack","Tree","Queue","Graph"],
+answer:2
+},
+
+{
+q:"What is the full form of CPU?",
+options:["Central Processing Unit","Computer Power Unit","Central Program Utility","Control Processing User"],
+answer:0
+},
+
+{
+q:"Which learning uses labelled data?",
+options:["Unsupervised Learning","Supervised Learning","Reinforcement Learning","Random Learning"],
+answer:1
+}
+
+];
+
+let quizIndex = 0;
+let quizScore = 0;
+let answered = false;
+
+function loadQuestion() {
+
+    const question = quizQuestions[quizIndex];
+
+    document.getElementById("quizQuestion").textContent =
+        "Question " + (quizIndex + 1) + ": " + question.q;
+
+    const options = document.getElementById("quizOptions");
+    options.innerHTML = "";
+
+    document.getElementById("quizResult").textContent = "";
+    answered = false;
+
+    question.options.forEach((option, index) => {
+
+        const button = document.createElement("button");
+        button.className = "quiz-option";
+        button.textContent = option;
+
+        button.addEventListener("click", () => {
+
+            if (answered) return;
+
+            answered = true;
+
+            if (index === question.answer) {
+                quizScore++;
+                document.getElementById("quizResult").textContent =
+                    "Correct answer! 🎉";
+            } else {
+                document.getElementById("quizResult").textContent =
+                    "Incorrect. Correct answer: " +
+                    question.options[question.answer];
+            }
+        });
+
+        options.appendChild(button);
+    });
+}
+
+function nextQuestion() {
+
+    if (!answered) {
+        document.getElementById("quizResult").textContent =
+            "Please select an answer first.";
+        return;
+    }
+
+    quizIndex++;
+
+    if (quizIndex >= quizQuestions.length) {
+
+        document.getElementById("quizQuestion").textContent =
+            "Quiz Completed!";
+
+        document.getElementById("quizOptions").innerHTML = "";
+
+        document.getElementById("quizResult").textContent =
+            "Your score: " + quizScore + " / " + quizQuestions.length;
+
+        return;
+    }
+
+    loadQuestion();
+}
+
+function restartQuiz() {
+    quizIndex = 0;
+    quizScore = 0;
+    loadQuestion();
+}
+
+renderSubjects();
+updateProgress();
+loadQuestion();
+
+</script>
+<style>
+#aiButton {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: #00c8ff;
+    color: #00111c;
+    border: none;
+    padding: 16px 22px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 9999;
+}
+
+#aiChat {
+    display: none;
+    position: fixed;
+    bottom: 90px;
+    right: 20px;
+    width: 340px;
+    max-width: calc(100vw - 40px);
+    height: 450px;
+    background: #0d1729;
+    border: 1px solid #00c8ff;
+    border-radius: 15px;
+    z-index: 9999;
+    overflow: hidden;
+    box-shadow: 0 0 25px #00c8ff55;
+}
+
+#aiHeader {
+    background: #00c8ff;
+    color: #00111c;
+    padding: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+#aiMessages {
+    height: 325px;
+    padding: 12px;
+    overflow-y: auto;
+    color: white;
+    font-size: 14px;
+}
+
+.aiMessage {
+    background: #192b45;
+    padding: 10px;
+    border-radius: 9px;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+}
+
+#aiInputArea {
+    display: flex;
+    padding: 8px;
+    gap: 5px;
+}
+
+#aiInput {
+    flex: 1;
+    min-width: 0;
+    padding: 10px;
+    border-radius: 7px;
+    border: 1px solid #00c8ff;
+    background: #111b2e;
+    color: white;
+}
+
+#aiSend {
+    background: #00c8ff;
+    border: none;
+    padding: 10px;
+    border-radius: 7px;
+    cursor: pointer;
+}
+</style>
+
+<button id="aiButton" onclick="toggleAI()">🤖 AIML BOT</button>
+
+<div id="aiChat">
+
+    <div id="aiHeader">
+        🤖 AIML STUDY ASSISTANT
+        <span onclick="toggleAI()" style="cursor:pointer">✖</span>
+    </div>
+
+    <div id="aiMessages">
+        <div class="aiMessage">
+            Hello! Welcome to AIML Study Hub.
+
+            Ask me about Python, AI, Machine Learning,
+            Mathematics or Computer Science!
+        </div>
+    </div>
+
+    <div id="aiInputArea">
+        <input id="aiInput"
+        type="text"
+        placeholder="Ask your doubt..."
+        onkeydown="if(event.key==='Enter') sendAI()">
+
+        <button id="aiSend" onclick="sendAI()">Send</button>
+    </div>
+
+</div>
+
+<script>
+
+function toggleAI() {
+    const chat = document.getElementById("aiChat");
+
+    chat.style.display =
+        chat.style.display === "block" ? "none" : "block";
+}
+
+function addMessage(message) {
+    const box = document.getElementById("aiMessages");
+
+    const div = document.createElement("div");
+    div.className = "aiMessage";
+    div.textContent = message;
+
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+}
+
+function getAIAnswer(question) {
+
+    const q = question.toLowerCase();
+
+    if (q.includes("python")) {
+        return "Python is a high-level programming language used in AI, ML, web development and data science.\n\nExample:\nprint('Hello World')";
+    }
+
+    if (q.includes("machine learning")) {
+        return "Machine Learning is a branch of AI that allows computers to learn patterns from data.\n\nTypes:\n1. Supervised Learning\n2. Unsupervised Learning\n3. Reinforcement Learning";
+    }
+
+    if (q.includes("artificial intelligence") || q === "what is ai") {
+        return "Artificial Intelligence is the ability of computer systems to perform tasks that normally require human intelligence.";
+    }
+
+    if (q.includes("algorithm")) {
+        return "An algorithm is a finite sequence of step-by-step instructions used to solve a problem.";
+    }
+
+    if (q.includes("loop")) {
+        return "Python has two main looping statements:\n1. for loop\n2. while loop\n\nExample:\nfor i in range(5):\n    print(i)";
+    }
+
+    if (q.includes("even")) {
+        return "Python program to check even number:\n\nnum = 10\nif num % 2 == 0:\n    print('Even')\nelse:\n    print('Odd')";
+    }
+
+    if (q.includes("data type")) {
+        return "Python data types include:\n1. int\n2. float\n3. str\n4. bool\n5. list\n6. tuple\n7. set\n8. dict";
+    }
+
+    if (q.includes("math")) {
+        return "Mathematics is important in AIML. Important topics include matrices, calculus, probability, statistics and linear algebra.";
+    }
+
+    if (q.includes("exam") || q.includes("10 marks")) {
+        return "For exam preparation, study definitions, explanations, examples, diagrams and applications. Ask about a particular subject or topic for more help.";
+    }
+
+    if (q.includes("hello") || q.includes("hi")) {
+        return "Hello! Welcome to AIML Study Hub. What topic would you like to learn today?";
+    }
+
+    return "I can currently answer basic predefined AIML study questions. Try asking about Python, AI, Machine Learning, algorithms, loops or data types.";
+}
+
+function sendAI() {
+
+    const input = document.getElementById("aiInput");
+    const question = input.value.trim();
+
+    if (question === "") return;
+
+    addMessage("You: " + question);
+
+    input.value = "";
+
+    setTimeout(function() {
+        const answer = getAIAnswer(question);
+        addMessage("AIML BOT: " + answer);
+    }, 400);
+}
+
+</script>
+<style>
+    .topic-note-card {
+        background: #111d32;
+        border: 1px solid #00c8ff;
+        border-radius: 12px;
+        padding: 22px;
+        margin-top: 20px;
+    }
+    
+    .topic-note-card h2,
+    .topic-note-card h3 {
+        color: #00c8ff;
+        margin-bottom: 12px;
+    }
+    
+    .topic-note-card p {
+        color: #d5e1f2;
+        margin-bottom: 15px;
+    }
+    
+    .topic-note-card pre {
+        background: #050a12;
+        color: #7ee7ff;
+        padding: 15px;
+        border-radius: 8px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        margin: 12px 0;
+    }
+    
+    .topic-note-button {
+        background: #00c8ff;
+        color: #00111c;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+        font-weight: bold;
+        margin: 5px;
+    }
+    
+    .topic-note-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        padding: 13px;
+        border-bottom: 1px solid #293c5a;
+        color: white;
+    }
+    
+    .topic-note-row button {
+        background: #00c8ff;
+        color: #00111c;
+        padding: 8px 12px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+    </style>
+    
+    <script>
+    
+    // Topic-wise notes database
+    
+    const AIML_TOPIC_NOTES = {
+    
+    "introduction to python": {
+    definition: "Python is a high-level, interpreted and general-purpose programming language.",
+    explanation: "Python is easy to learn and has simple syntax. It is used in Artificial Intelligence, Machine Learning, Data Science, web development and automation.",
+    example: 'print("Hello World")',
+    output: "Hello World"
+    },
+    
+    "data types": {
+    definition: "Data types specify the type of value stored in a variable.",
+    explanation: "Python provides int, float, string, boolean, list, tuple, set and dictionary data types.",
+    example: 'age = 20\nprice = 99.5\nname = "Irfan"\nprint(type(age))',
+    output: "<class 'int'>"
+    },
+    
+    "operators": {
+    definition: "Operators are symbols used to perform operations on variables and values.",
+    explanation: "Python has arithmetic, comparison, logical, assignment, membership and identity operators.",
+    example: "a = 10\nb = 5\nprint(a + b)\nprint(a > b)",
+    output: "15\nTrue"
+    },
+    
+    "conditional statements": {
+    definition: "Conditional statements execute code based on a given condition.",
+    explanation: "Python uses if, elif and else statements for decision making.",
+    example: 'marks = 75\nif marks >= 40:\n    print("Pass")\nelse:\n    print("Fail")',
+    output: "Pass"
+    },
+    
+    "loops": {
+    definition: "A loop is used to execute a block of code repeatedly.",
+    explanation: "Python has two main loops: for loop and while loop. A for loop iterates over a sequence. A while loop executes as long as its condition is true.",
+    example: "for i in range(1, 6):\n    print(i)",
+    output: "1\n2\n3\n4\n5"
+    },
+    
+    "functions": {
+    definition: "A function is a reusable block of code that performs a specific task.",
+    explanation: "Functions reduce code repetition and improve readability. Python uses the def keyword to define a function.",
+    example: "def add(a, b):\n    return a + b\n\nprint(add(10, 20))",
+    output: "30"
+    },
+    
+    "lists and tuples": {
+    definition: "Lists and tuples are Python collection data types.",
+    explanation: "A list is ordered and mutable. A tuple is ordered and immutable.",
+    example: "numbers = [10, 20, 30]\nvalues = (10, 20, 30)\nprint(numbers[0])\nprint(values[1])",
+    output: "10\n20"
+    },
+    
+    "artificial intelligence": {
+    definition: "Artificial Intelligence is a branch of computer science that develops systems capable of performing tasks that normally require human intelligence.",
+    explanation: "AI includes learning, reasoning, problem-solving, perception and language understanding.",
+    example: "Examples include voice assistants, recommendation systems and image recognition.",
+    output: "AI is used in healthcare, education, banking and transportation."
+    },
+    
+    "supervised learning": {
+    definition: "Supervised learning is a machine learning technique that learns from labelled data.",
+    explanation: "The model learns the relationship between input and known output. It is used in classification and regression.",
+    example: "Predicting house prices using previous house data.",
+    output: "The model predicts a price for a new house."
+    },
+    
+    "unsupervised learning": {
+    definition: "Unsupervised learning finds patterns in data without labelled outputs.",
+    explanation: "Clustering and dimensionality reduction are common unsupervised learning tasks.",
+    example: "Grouping customers according to shopping behaviour.",
+    output: "Customers are grouped into similar clusters."
+    },
+    
+    "neural networks": {
+    definition: "A neural network is a machine learning model inspired by biological neural systems.",
+    explanation: "It consists of interconnected artificial neurons arranged in input, hidden and output layers.",
+    example: "Neural networks can be used for image recognition.",
+    output: "A trained network produces predictions."
+    },
+    
+    "tokenization": {
+    definition: "Tokenization is the process of splitting text into smaller units called tokens.",
+    explanation: "Tokens can be words, subwords or characters. It is an important step in Natural Language Processing.",
+    example: 'Text: "AI is useful"\nTokens: ["AI", "is", "useful"]',
+    output: '["AI", "is", "useful"]'
+    },
+    
+    "matrices": {
+    definition: "A matrix is a rectangular arrangement of numbers in rows and columns.",
+    explanation: "Matrices are used in solving equations, transformations, computer graphics and Machine Learning.",
+    example: "A = [[1, 2], [3, 4]]",
+    output: "A matrix containing 2 rows and 2 columns."
+    },
+    
+    "algorithms": {
+    definition: "An algorithm is a finite sequence of step-by-step instructions used to solve a problem.",
+    explanation: "An algorithm should have clear steps, defined inputs, outputs and a finite ending.",
+    example: "Step 1: Start\nStep 2: Read two numbers\nStep 3: Add them\nStep 4: Display result\nStep 5: Stop",
+    output: "Sum of two numbers is displayed."
+    }
+    
+    };
+    
+    
+    // Notes storage
+    
+    const AIML_NOTES_DONE_KEY = "aimlNotesCompleted";
+    
+    let aimlNotesCompleted = JSON.parse(
+        localStorage.getItem(AIML_NOTES_DONE_KEY) || "[]"
+    );
+    
+    
+    // Replace the old openSubject function
+    
+    window.openSubject = function(subject) {
+    
+        const panel = document.getElementById("learningPanel");
+    
+        if (!panel) {
+            alert("Learning panel not found. Check your website structure.");
+            return;
+        }
+    
+        panel.innerHTML = "";
+    
+        const heading = document.createElement("h3");
+        heading.textContent = subject.name + " - Year " + subject.year;
+    
+        panel.appendChild(heading);
+    
+        const message = document.createElement("p");
+        message.textContent = "Click any topic to open its notes.";
+    
+        panel.appendChild(message);
+    
+        subject.topics.forEach(function(topic) {
+    
+            const row = document.createElement("div");
+            row.className = "topic-note-row";
+    
+            const name = document.createElement("span");
+            name.textContent = topic;
+    
+            const button = document.createElement("button");
+            button.textContent = "Open Notes";
+    
+            button.onclick = function() {
+                showTopicNotes(subject, topic);
+            };
+    
+            row.appendChild(name);
+            row.appendChild(button);
+    
+            panel.appendChild(row);
+    
+        });
+    
+        document.getElementById("learning").scrollIntoView({
+            behavior: "smooth"
+        });
+    
+    };
+    
+    
+    // Display topic notes
+    
+    function showTopicNotes(subject, topic) {
+    
+        const key = topic.toLowerCase();
+    
+        const data = AIML_TOPIC_NOTES[key];
+    
+        const notes = data || {
+            definition: topic + " is an important topic in " + subject.name + ".",
+            explanation: "Study the definition, basic concepts, working principles, important features and applications of " + topic + ". Prepare examples and practise related questions. Detailed topic-specific notes need to be added to the notes database.",
+            example: "Topic: " + topic,
+            output: "Understand the concept and practise a related example."
+        };
+    
+        let area = document.getElementById("aimlTopicNotes");
+    
+        if (!area) {
+    
+            area = document.createElement("div");
+    
+            area.id = "aimlTopicNotes";
+            area.className = "topic-note-card";
+    
+            document.getElementById("learningPanel").after(area);
+    
+        }
+    
+        area.innerHTML = "";
+    
+        const heading = document.createElement("h2");
+        heading.textContent = "📘 " + topic + " - Complete Notes";
+    
+        const definitionTitle = document.createElement("h3");
+        definitionTitle.textContent = "1. Definition";
+    
+        const definition = document.createElement("p");
+        definition.textContent = notes.definition;
+    
+        const explanationTitle = document.createElement("h3");
+        explanationTitle.textContent = "2. Explanation";
+    
+        const explanation = document.createElement("p");
+        explanation.textContent = notes.explanation;
+    
+        const exampleTitle = document.createElement("h3");
+        exampleTitle.textContent = "3. Example";
+    
+        const example = document.createElement("pre");
+        example.textContent = notes.example;
+    
+        const outputTitle = document.createElement("h3");
+        outputTitle.textContent = "4. Output / Result";
+    
+        const output = document.createElement("pre");
+        output.textContent = notes.output;
+    
+        const completedButton = document.createElement("button");
+        completedButton.className = "topic-note-button";
+    
+        const completionKey = subject.name + "::" + topic;
+    
+        function updateButton() {
+            completedButton.textContent =
+                aimlNotesCompleted.includes(completionKey)
+                ? "Completed ✓"
+                : "Mark as Completed";
+        }
+    
+        updateButton();
+    
+        completedButton.onclick = function() {
+    
+            if (!aimlNotesCompleted.includes(completionKey)) {
+    
+                aimlNotesCompleted.push(completionKey);
+    
+                localStorage.setItem(
+                    AIML_NOTES_DONE_KEY,
+                    JSON.stringify(aimlNotesCompleted)
+                );
+    
+            }
+    
+            updateButton();
+    
+        };
+    
+        area.append(
+            heading,
+            definitionTitle,
+            definition,
+            explanationTitle,
+            explanation,
+            exampleTitle,
+            example,
+            outputTitle,
+            output,
+            completedButton
+        );
+    
+        area.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+    
+    }
+    
+    </script>
+    <!-- AIML STUDY HUB PDF GENERATOR -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+.pdf-section {
+    background: #101e35;
+    border: 1px solid #00c8ff;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.pdf-section h2 {
+    color: #00c8ff;
+    margin-bottom: 15px;
+}
+
+.pdf-button {
+    background: #008fc7;
+    color: white;
+    padding: 12px 16px;
+    border: none;
+    border-radius: 7px;
+    margin: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.pdf-button:hover {
+    background: #00bfff;
+}
+
+.pdf-unit {
+    background: #172944;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 12px 0;
+}
+
+.pdf-unit h3 {
+    color: #00c8ff;
+}
+</style>
+
+<div class="container">
+
+<div class="pdf-section">
+
+<h2>📚 AIML STUDY MATERIAL PDF CENTER</h2>
+
+<p>Select your year and subject to generate study PDFs.</p>
+
+<br>
+
+<select id="pdfYear" class="search" onchange="loadPDFSubjects()">
+<option value="">Select B.Tech Year</option>
+<option value="1">First Year</option>
+<option value="2">Second Year</option>
+<option value="3">Third Year</option>
+<option value="4">Fourth Year</option>
+</select>
+
+<select id="pdfSubject" class="search" onchange="loadPDFUnits()">
+<option value="">Select Subject</option>
+</select>
+
+<div id="pdfUnits"></div>
+
+</div>
+
+</div>
+
+<script>
+
+// SUBJECT DATABASE
+
+const pdfSubjects = {
+
+1: [
+"Mathematics-I",
+"Engineering Physics",
+"Engineering Chemistry",
+"Python Programming",
+"Computational Thinking",
+"English"
+],
+
+2: [
+"Mathematics-II",
+"Data Structures",
+"Object Oriented Programming",
+"Digital Logic Design",
+"Probability and Statistics"
+],
+
+3: [
+"Artificial Intelligence",
+"Machine Learning",
+"Database Management Systems",
+"Operating Systems",
+"Computer Networks"
+],
+
+4: [
+"Deep Learning",
+"Natural Language Processing",
+"Computer Vision",
+"Data Science",
+"Big Data Analytics",
+"Cloud Computing"
+]
+
+};
+
+
+// UNIT DATABASE
+
+const pdfUnitNames = [
+"Introduction and Fundamentals",
+"Basic Concepts and Principles",
+"Methods and Applications",
+"Advanced Concepts",
+"Practical Applications"
+];
+
+
+// STUDY CONTENT DATABASE
+
+const pdfContent = {
+
+"Python Programming": {
+
+"Introduction and Fundamentals": {
+notes: [
+"Python is a high-level, interpreted and general-purpose programming language.",
+"Python was created by Guido van Rossum.",
+"Python is known for its simple syntax and readability.",
+"Python is widely used in AI, ML, Data Science and Web Development."
+],
+questions: [
+["2 Marks","What is Python?","Python is a high-level, interpreted, general-purpose programming language."],
+["2 Marks","Who developed Python?","Python was developed by Guido van Rossum."],
+["5 Marks","Explain the features of Python.","Python is easy to learn, interpreted, portable, open-source, object-oriented and supports many libraries."],
+["10 Marks","Explain Python and its applications.","Python is a popular programming language. It is used in Artificial Intelligence, Machine Learning, Data Science, Web Development, Automation and Scientific Computing."]
+],
+example: 'print("Hello World")\na = 10\nb = 20\nprint(a+b)',
+output: "Hello World\n30"
+},
+
+"Basic Concepts and Principles": {
+notes: [
+"A variable is a name used to store a value.",
+"Data types describe the kind of data stored in a variable.",
+"Python supports int, float, string, Boolean, list, tuple, set and dictionary."
+],
+questions: [
+["2 Marks","What is a variable?","A variable is a named reference used to store a value."],
+["2 Marks","What is a data type?","A data type specifies the type of value stored in a variable."],
+["5 Marks","Explain Python data types.","Python supports numeric, string, Boolean and collection data types."],
+["10 Marks","Explain different data types with examples.","Integer stores whole numbers, float stores decimal values, string stores text, Boolean stores True or False, list stores ordered collections, tuple stores immutable collections, set stores unique values and dictionary stores key-value pairs."]
+],
+example: 'a = 10\nb = 20.5\nname = "Student"\nprint(type(a))\nprint(type(b))\nprint(type(name))',
+output: "<class 'int'>\n<class 'float'>\n<class 'str'>"
+},
+
+"Methods and Applications": {
+notes: [
+"Operators are symbols used to perform operations on values.",
+"Arithmetic operators include +, -, *, /, % and **.",
+"Comparison operators compare two values.",
+"Logical operators include and, or and not."
+],
+questions: [
+["2 Marks","What is an operator?","An operator is a symbol used to perform an operation on operands."],
+["5 Marks","Explain arithmetic operators.","Arithmetic operators perform addition, subtraction, multiplication, division, modulus and exponentiation."],
+["10 Marks","Explain different types of operators in Python.","Python supports arithmetic, comparison, logical, assignment, bitwise, membership and identity operators."]
+],
+example: 'a = 10\nb = 5\nprint(a+b)\nprint(a-b)\nprint(a*b)\nprint(a/b)',
+output: "15\n5\n50\n2.0"
+}
+
+}
+
+};
+
+
+// LOAD SUBJECTS
+
+function loadPDFSubjects() {
+
+let year = document.getElementById("pdfYear").value;
+let select = document.getElementById("pdfSubject");
+
+select.innerHTML = '<option value="">Select Subject</option>';
+
+if(!year) return;
+
+pdfSubjects[year].forEach(subject => {
+
+let option = document.createElement("option");
+
+option.value = subject;
+option.textContent = subject;
+
+select.appendChild(option);
+
+});
+
+document.getElementById("pdfUnits").innerHTML = "";
+
+}
+
+
+// LOAD UNITS
+
+function loadPDFUnits() {
+
+let subject = document.getElementById("pdfSubject").value;
+
+let html = "";
+
+if(!subject) return;
+
+pdfUnitNames.forEach((unit,index) => {
+
+html += `
+<div class="pdf-unit">
+
+<h3>UNIT ${index+1} - ${unit}</h3>
+
+<button class="pdf-button"
+onclick="generatePDF('${subject}','${unit}','notes')">
+📘 Notes PDF
+</button>
+
+<button class="pdf-button"
+onclick="generatePDF('${subject}','${unit}','questions')">
+📝 Questions & Answers PDF
+</button>
+
+<button class="pdf-button"
+onclick="generatePDF('${subject}','${unit}','examples')">
+💻 Examples PDF
+</button>
+
+</div>
+`;
+
+});
+
+document.getElementById("pdfUnits").innerHTML = html;
+
+}
+
+
+// GENERATE PDF
+
+function generatePDF(subject,unit,type) {
+
+if(!window.jspdf) {
+alert("PDF library load nahi hui. Internet connection check karo.");
+return;
+}
+
+const { jsPDF } = window.jspdf;
+
+const pdf = new jsPDF();
+
+let y = 20;
+
+function addText(text,size=12) {
+
+pdf.setFontSize(size);
+
+let lines = pdf.splitTextToSize(String(text),170);
+
+if(y + lines.length * 7 > 280) {
+pdf.addPage();
+y = 20;
+}
+
+pdf.text(lines,20,y);
+
+y += lines.length * 7 + 5;
+
+}
+
+addText("AIML STUDY HUB",20);
+
+addText(subject,16);
+
+addText(unit,14);
+
+addText("Study Material",13);
+
+let data = pdfContent[subject] &&
+pdfContent[subject][unit];
+
+if(!data) {
+
+addText("Study material for this unit is being prepared.");
+
+addText("Please add syllabus-based notes, questions and examples to the content database.");
+
+}
+
+else if(type === "notes") {
+
+addText("COMPLETE NOTES",16);
+
+data.notes.forEach((note,index) => {
+addText((index+1)+". "+note);
+});
+
+}
+
+else if(type === "questions") {
+
+addText("QUESTIONS AND ANSWERS",16);
+
+data.questions.forEach(item => {
+
+addText(item[0]+": "+item[1],12);
+
+addText("Answer: "+item[2],11);
+
+});
+
+}
+
+else if(type === "examples") {
+
+addText("EXAMPLES AND PROGRAMS",16);
+
+addText("Program:");
+
+addText(data.example);
+
+addText("Output:");
+
+addText(data.output);
+
+}
+
+addText("Generated by AIML STUDY HUB",10);
+
+let filename =
+subject.replace(/[^a-z0-9]/gi,"_")+"_"+
+unit.replace(/[^a-z0-9]/gi,"_")+"_"+type+".pdf";
+
+pdf.save(filename);
+
+alert("Your PDF is ready!");
+
+}
+
+</script>
+
+<!-- END AIML PDF GENERATOR -->
+<p style="
+    color:#00c8ff;
+    font-size:13px;
+    text-align:center;
+    margin:8px 0 18px;
+    letter-spacing:1px;
+">
+    IRFAN | Founder of AIML STUDY HUB
+</p>
+</body>
+</html>
